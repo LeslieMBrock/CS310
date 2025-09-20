@@ -16,8 +16,8 @@ void week1 () {
 
 void week2 () {
     int num;
-    cout << "Enter a number: ";//incorrect manipulator direction, should be cout<<//
-    cin >> num;//incorrect mainpulator directon, should be cin>>//
+    cout >> "Enter a number: ";//incorrect operator direction, should be cout<<//
+    cin << num;//incorrect operator directon, should be cin>>//
     cout << "You entered: " << num << endl;
 }
 int main() { 
