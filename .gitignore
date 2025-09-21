@@ -7,6 +7,8 @@
 # compiled executables and debug files
 1stC++
 *.dSYM/
+Ch03Exercise07
 
 #other configuration files
 .yml
+
