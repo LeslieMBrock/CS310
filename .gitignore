@@ -8,6 +8,7 @@
 1stC
 *.dSYM/
 Ch03Exercise07
+Ch01Exercise13
 
 #other configuration files
 .yml
