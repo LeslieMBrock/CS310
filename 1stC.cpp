@@ -1,8 +1,7 @@
-//This program is written with with weekly progressions--week 1 and week 2 will run together//
-/*void is a return type--function performs action--gives back no results, it just doing something, not calculating or return a value*/
-//define it first--then function main()//
-// 3 hours to learn the importance of files names--Im leaving it to reinforce the lesson in stupidity ./'1stC++'.//
-#include <iostream> //combo of i and the o//
+//This program is written with with weekly progressions//
+
+#include <iostream> 
+
 using namespace std;
 
 //week 1 function//
@@ -16,12 +15,29 @@ void week1 () {
 
 void week2 () {
     int num;
-    cout >> "Enter a number: ";//incorrect operator direction, should be cout<<//
-    cin << num;//incorrect operator directon, should be cin>>//
+    cout << "Enter a number: ";
+    cin >> num;>
     cout << "You entered: " << num << endl;
 }
-int main() { 
-    week1();//comment out to run without// 
-    week2();// comment out to run without//
-    return 0;//only need the one here//
+
+//Week 3 selection function synax errors using if/else/while//
+void week3 () {
+    //hint: You're stuck...//
+    int choice;
+    cout << "Enter a number other than 1: ";
+    cin >> choice;
+    if (choice = 1) {
+        while (true) {
+            cout << "You are stuck!\n"
 }
+else {
+        cout << "You are free!\n" <<endl;
+    }
+}
+
+int main() { 
+    //week1();//comment out to run without// 
+    //week2();// comment out to run without//
+    week3();//comment out to run without//
+}
+    return 0;
