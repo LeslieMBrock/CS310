@@ -35,9 +35,16 @@ else {
     }
 }
 
+void week4 () {
+    //This program demonstrates a simple for loop in C++ using the repetition structure using for //
+    for (int i = 1; i <= 5; i++) {
+        cout << "Count to 5 " << i << endl;
+    }
+}
 int main() { 
     //week1();//comment out to run without// 
     //week2();// comment out to run without//
-    week3();//comment out to run without//
+    //week3();//comment out to run without//
+    week4();//comment out to run without//
 }
     return 0;

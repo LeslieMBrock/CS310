@@ -23,7 +23,7 @@ int main() {
     cout << "Enter the number of quarters: ";
     cin >> numQuarters;
 
-    // Calculate the total amount in dollars, number of coins times value of its self, the () are the order of operations, figure out the problem--then write it out in word format--Please Exuse My Dear Aunt Sally//
+    //Calculate the total amount in dollars, number of coins times value of its self, the () are the order of operations, figure out the problem--then write it out in word format--Please Exuse My Dear Aunt Sally//
     totalDollars = (numPennies * 0.01) + (numNickels * 0.05) + (numDimes * 0.10) + (numQuarters * 0.25);
 
     // fee has to come after the totalDollars calculation because it has to get the total first before getting the 10 percent.//
