@@ -49,9 +49,13 @@ int main () {
         winnerIndex = i;
     }
 }
-    // Display winner's name and vote count, and percentage of total votes--winner winner chicken dinner!
+     // Display winner announcement - winner winner chicken dinner!
     double winnerPercentage = (static_cast<double>(votes[winnerIndex]) / totalVotes) * 100;
-    cout << "\nWinner: " << candidates[winnerIndex] << " with " << votes[winnerIndex] << " votes (" << winnerPercentage << "%)!" << endl;
+    cout << "\n========================================" << endl;//styling for the winner display--:)
+    cout << "*** ELECTION WINNER ***" << endl;
+    cout << "Winner: " << candidates[winnerIndex] << " with " << votes[winnerIndex] << " votes (" << winnerPercentage << "%)!" << endl;
+    cout << "========================================" << endl;
+    
     return 0;
 }
 
