@@ -8,7 +8,23 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <termios.h> //for mac getch()
+#include <unistd.h>  //THIS for STDIN_FILENO on Mac! cuss words
 using namespace std;
+
+// MAC getch() function definition - ADD THIS! (only in windows directly)
+int getch() {
+    struct termios oldt, newt;
+    int ch;
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    ch = getchar();
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+    return ch;
+}
+
 
 // Base class - DECLARATIONS ONLY
 class BankAccount {
@@ -203,7 +219,8 @@ int main() {
         cout << "5. Display All Accounts" << endl;
         cout << "6. Exit" << endl;
         cout << "Enter your choice (1-6): ";
-        cin >> choice;
+        choice = getch() - '0'; // Convert char to int
+        cout << choice << endl; // Echo the choice for user feedback
 
         switch (choice) {
             case 1: {
@@ -245,18 +262,16 @@ int main() {
 
                 accountCount++;
 
-                cout << "\nPress 0 to return to main menu...";
-                int returnChoice;
-                cin >> returnChoice;
+                cout << "\nPress any key to return to main menu...";
+                getch();
                 break;
             }
 
             case 2: {
                 if (accountCount == 0) {
                     cout << "No accounts exist! Create an account first, or see your Epic Bank representative." << endl;
-                    cout << "\nPress 0 to return to main menu...";
-                    int returnChoice;
-                    cin >> returnChoice;
+                    cout << "\nPress any key to return to main menu...";
+                    getch();
                     break;
                 }
 
@@ -277,18 +292,16 @@ int main() {
                     cout << "Account not found! Please see your Epic Bank representative." << endl;
                 }
 
-                cout << "\nPress 0 to return to main menu...";
-                int returnChoice;
-                cin >> returnChoice;
+                cout << "\nPress any key to return to main menu...";
+                 getch();
                 break;
             }
             case 3: {
          // Checking Account Options
     if (accountCount == 0) {
         cout << "No accounts exist! Create an account first. Please contact your Epic bank representative." << endl;
-        cout << "\nPress 0 to return to main menu...";
-        int returnChoice;
-        cin >> returnChoice;
+        cout << "\nPress any key to return to main menu...";
+        getch();
         break;
     }
 
@@ -311,9 +324,8 @@ int main() {
     if (!found) {
         cout << "Checking account not found! Access denied." << endl;
         cout << "Please contact your Epic Bank Representative for assistance." << endl;
-        cout << "\nPress 0 to return to main menu...";
-        int returnChoice;
-        cin >> returnChoice;
+        cout << "\nPress any key to return to main menu...";
+        getch();
         break;
     }
 
@@ -327,7 +339,8 @@ int main() {
     cout << "3. Write a Check" << endl;
     cout << "4. Check Balance" << endl;
     cout << "Enter choice (1-4): ";
-    cin >> typeChoice;
+   typeChoice = getch() - '0';
+   cout << typeChoice << endl; // Echo the choice for user feedback
 
     switch(typeChoice) {
         case 1: {
@@ -407,8 +420,7 @@ int main() {
     }
     
     cout << "\nPress 0 to return to main menu...";
-    int returnChoice;
-    cin >> returnChoice;
+    choice = getch() - '0';
     break;
 }
 
@@ -416,9 +428,8 @@ case 4: {
     // Savings Account Options
     if (accountCount == 0) {
         cout << "No accounts exist! Create an account first. Please contact your Epic bank representative." << endl;
-        cout << "\nPress 0 to return to main menu...";
-        int returnChoice;
-        cin >> returnChoice;
+        cout << "\nPress any key to return to main menu...";
+        getch();
         break;
     }
 
@@ -441,9 +452,8 @@ case 4: {
     if (!found) {
         cout << "Savings account not found! Access denied." << endl;
         cout << "Please contact your Epic Bank Representative for assistance." << endl;
-        cout << "\nPress 0 to return to main menu...";
-        int returnChoice;
-        cin >> returnChoice;
+        cout << "\nPress any key to return to main menu...";
+        getch();
         break;
     }
 
@@ -512,8 +522,7 @@ case 4: {
     }
     
     cout << "\nPress 0 to return to main menu...";
-    int returnChoice;
-    cin >> returnChoice;
+    choice = getch() - '0';
     break;
 }
 
@@ -523,10 +532,9 @@ case 5: {
     for (int i = 0; i < accountCount; i++) {
         accounts[i].displayAccountInfo();
         cout << "-------------------------" << endl;
-    }           
-    cout << "\nPress 0 to return to main menu...";
-    int returnChoice;
-    cin >> returnChoice;    
+    }
+    cout << "\nPress any key to return to main menu...";
+    getch();
     break;
 }
 
@@ -541,3 +549,7 @@ case 6:
 
     return 0;
 }
+//getch() function 
+//Instant menu selection
+//"Press any key to continue" - Just like real banking systems
+//Mixed input strategy - Simple choices use getch(), complex data uses cin
